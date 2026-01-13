@@ -1165,12 +1165,13 @@
  }
 
  button {
-     /* padding: 10px 25px; */
+     padding: 10px 25px;
      font-size: 16px;
      border: none;
      border-radius: 8px;
      cursor: pointer;
      transition: background 0.3s ease;
+     margin-bottom: 30px;
  }
 
  #yesBtn {
