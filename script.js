@@ -194,8 +194,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Close menu on close button click
-    mobileClose.addEventListener('click', closeMenu);
+    // Close menu on close button click, if the optional close button exists.
+    if (mobileClose) {
+        mobileClose.addEventListener('click', closeMenu);
+    }
 
     // Close menu when clicking on a link
     mobileNavLinks.forEach(link => {
