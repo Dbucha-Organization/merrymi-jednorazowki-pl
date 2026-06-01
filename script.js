@@ -31,6 +31,19 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
+// Ensure image loading attributes are applied without changing markup structure.
+document.addEventListener('DOMContentLoaded', () => {
+    const heroImage = document.querySelector('.main-ninja');
+    document.querySelectorAll('img').forEach((img) => {
+        img.decoding = 'async';
+        if (img === heroImage) {
+            img.loading = 'eager';
+        } else {
+            img.loading = 'lazy';
+        }
+    });
+});
+
 // Parallax Effect for Hero
 document.addEventListener('mousemove', (e) => {
     const amount = 30;
