@@ -20,10 +20,15 @@
      outline: none;
  }
 
+ html {
+     overflow-x: hidden;
+ }
+
  body {
      background-color: var(--bg-dark);
      color: var(--text-main);
      font-family: 'Inter', sans-serif;
+     max-width: 100%;
      overflow-x: hidden;
      -webkit-font-smoothing: antialiased;
  }
@@ -135,18 +140,17 @@
          display: none;
      }
 
+     .container {
+         padding: 0 16px;
+     }
+
      .reveal {
          font-size: 20px !important;
      }
 
-     .stat-left {
-         top: -10% !important;
-
-     }
-
-
-     .stat-right {
-         bottom: 0 !important;
+     .earth-outline,
+     .floating-stat {
+         display: none;
      }
  }
 
@@ -253,6 +257,31 @@
          object-fit: initial;
          object-position: center center;
      }
+
+     .hero {
+         padding: 72px 0;
+     }
+
+     .hero h1 {
+         font-size: clamp(28px, 9vw, 38px);
+         line-height: 0.98;
+         margin-bottom: 18px;
+     }
+
+     .hero p {
+         font-size: 15px;
+         line-height: 1.5;
+         margin-bottom: 28px;
+         max-width: 100%;
+     }
+
+     .hero-images {
+         max-width: 340px;
+     }
+
+     .main-ninja {
+         max-width: 100%;
+     }
  }
 
  /* Hero */
@@ -260,6 +289,7 @@
      padding: 120px 0 100px;
      text-align: center;
      position: relative;
+     overflow: hidden;
  }
 
  .hero h1 {
