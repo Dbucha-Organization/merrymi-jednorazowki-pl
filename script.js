@@ -6,15 +6,25 @@ window.addEventListener('load', () => {
     }, 500);
 });
 
+function syncHeaderHeight() {
+    const header = document.getElementById('header');
+    if (!header) return;
+    document.documentElement.style.setProperty('--header-height', `${header.offsetHeight}px`);
+}
+
 // Header Scroll Effect
 window.addEventListener('scroll', () => {
     const header = document.getElementById('header');
+    if (!header) return;
     if (window.scrollY > 50) {
         header.classList.add('scrolled');
     } else {
         header.classList.remove('scrolled');
     }
 });
+
+window.addEventListener('load', syncHeaderHeight);
+window.addEventListener('resize', syncHeaderHeight);
 
 // Reveal Animations
 const observerOptions = {
@@ -34,9 +44,11 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 // Ensure image loading attributes are applied without changing markup structure.
 document.addEventListener('DOMContentLoaded', () => {
     const heroImage = document.querySelector('.main-ninja');
+    const promoBannerImage = document.querySelector('.promo-banner-image');
+    syncHeaderHeight();
     document.querySelectorAll('img').forEach((img) => {
         img.decoding = 'async';
-        if (img === heroImage) {
+        if (img === heroImage || img === promoBannerImage) {
             img.loading = 'eager';
         } else {
             img.loading = 'lazy';
@@ -275,14 +287,3 @@ noBtn.addEventListener("click", () => {
     window.location.href = "https://www.google.pl";
 });
 
-// Hide the top warning when the page is scrolled
-const warn = document.querySelector(".warn");
-if (warn) {
-    window.addEventListener("scroll", () => {
-        if (window.scrollY > 10) {
-            warn.style.display = "none";
-        } else {
-            warn.style.display = "";
-        }
-    });
-}
